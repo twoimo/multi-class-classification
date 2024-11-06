@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-Flask==2.0.2
-numpy
-tensorflow==2.6.0
-=======
 Flask
 numpy
 tensorflow
->>>>>>> db7414708ad78f2af282d2d9a1bc7c5d0c75c24a
