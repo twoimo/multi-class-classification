@@ -1,0 +1,96 @@
+{% extends "base.html" %} {% block title %}이미지 분류 서비스{% endblock %} {%
+block content %}
+
+<div class="text-center">
+  <h1 class="text-4xl font-bold mb-6">
+    이미지 분류 서비스에 오신 것을 환영합니다
+  </h1>
+  <div class="mt-8">
+    <div class="flex justify-center">
+      {% if uploaded_image %}
+      <img
+        src="{{ uploaded_image }}"
+        alt="업로드된 이미지"
+        class="rounded-lg shadow-md mb-4 max-w-lg max-w-full h-auto"
+      />
+      {% else %}
+      <img
+        src="{{ url_for('static', filename='img/sample.jpg') }}"
+        alt="샘플 이미지"
+        class="rounded-lg shadow-md mb-4 max-w-lg max-w-full h-auto"
+      />
+      {% endif %}
+    </div>
+    <p class="text-lg mb-8">
+      {% if uploaded_image %}
+      <span class="font-semibold text-blue-500 text-2xl highlight"
+        >업로드된 이미지의 분류 결과:</span
+      >
+      <span class="font-semibold text-green-500 text-2xl highlight"
+        >{{ classification_result }}</span
+      >
+      {% else %}
+      <span class="font-semibold text-blue-500 text-2xl highlight"
+        >샘플 이미지의 분류 결과:</span
+      >
+      <span class="font-semibold text-green-500 text-2xl highlight">Cat</span>
+      {% endif %}
+    </p>
+  </div>
+  <div class="mt-8">
+    <form
+      id="upload-form"
+      action="{{ url_for('upload_file') }}"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="file" id="file-input" class="hidden" />
+      <button
+        type="button"
+        class="inline-block bg-green-500 text-white py-3 px-6 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-300 w-full"
+        onclick="document.getElementById('file-input').click();"
+      >
+        이미지를 업로드하세요
+      </button>
+      <button type="submit" id="submit-button" class="hidden">제출</button>
+    </form>
+  </div>
+  <div class="mt-8">
+    <a
+      href="{{ url_for('static', filename='img/sample_img.zip') }}"
+      class="inline-block bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300 w-full text-center"
+      download
+    >
+      샘플 이미지 다운로드
+    </a>
+  </div>
+  <div class="mt-8">
+    <h2 class="text-2xl font-bold mb-4">분류 가능한 카테고리:</h2>
+    <div class="flex flex-wrap justify-center">
+      {% for category in ['Airplane', 'Automobile', 'Bird', 'Cat', 'Deer',
+      'Dog', 'Frog', 'Horse', 'Ship', 'Truck'] %}
+      <div class="w-1/2 sm:w-1/4 p-2">
+        <div class="bg-white rounded-lg shadow-md p-4">
+          <p class="text-center text-lg">{{ category }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById("file-input").addEventListener("change", function () {
+    document.getElementById("submit-button").click();
+  });
+</script>
+
+<style>
+  .highlight {
+    background-color: #e0f7fa;
+    padding: 0.2em 0.4em;
+    border-radius: 0.2em;
+  }
+</style>
+
+{% endblock %}
