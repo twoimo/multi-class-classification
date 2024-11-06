@@ -19,10 +19,10 @@
 
 ## 요구 사항
 
-- Python 3.7 이상
-- Flask==2.0.2
-- numpy==1.21.2
-- tensorflow==2.6.0
+- Python
+- Flask
+- numpy
+- tensorflow
 
 ## 설치 방법
 
