@@ -21,6 +21,7 @@
 
 - Python
 - Flask
+- gdown
 - numpy
 - tensorflow
 
