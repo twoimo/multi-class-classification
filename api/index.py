@@ -13,8 +13,8 @@ app = Flask(__name__)
 classes = ['Airplane', 'Automobile', 'Bird', 'Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
 
 # 모델 파일을 구글 드라이브에서 다운로드
-model_url = 'https://drive.google.com/file/d/1TL3fLEy_l79xfRyhFpcc1pZi8_lQ9eJe/view?usp=sharing'
-model_path = 'best_model_resnet50.keras'
+model_url = 'https://drive.google.com/file/d/1ZdjioQ4t8wgZO9jijKcSGDf2p6B_piV9/view?usp=sharing'
+model_path = 'efficientnetv2s_11091900.keras'
 
 if not os.path.exists(model_path):
     gdown.download(model_url, model_path, quiet=False)
